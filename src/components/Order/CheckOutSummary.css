@@ -1,0 +1,20 @@
+.checkoutSummary{
+
+text-align: center;
+width: 80%;
+margin: auto;
+
+}
+
+.checkoutSummary h1{
+    text-align: center;
+}
+
+@media(min-width:600px){
+
+    .checkoutSummary{
+        width:500px;
+        text-align: center;
+    }
+
+}
