@@ -1,0 +1,14 @@
+.order{
+    width: 80%;
+     border: 1px solid #eee;
+     box-shadow: 0 2px 3px #ccc;
+     box-sizing: border-box;
+     margin: auto auto;
+     padding:8px;
+}
+
+.order ul{
+    list-style: none;
+}
+
+

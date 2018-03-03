@@ -23,8 +23,8 @@ class ContactDetails extends Component{
             loading:true
         })
         let customerOrder = {
-            ingredients:this.state.ingredients,
-            price:this.state.price,
+            ingredients:this.props.ingredients,
+            price:this.props.price,
             customer:{
                        name:'JimmyJohn',
                        phoneNumber:'33456777',
