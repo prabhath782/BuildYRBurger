@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import { Route } from 'react-router-dom';
+import {connect} from 'react-redux';    
 
 import CheckOutSummary from '../../components/Order/CheckOutSummary';
 import ContactDetails from '../../containers/Checkout/ContactDetails/ContactDetails';
@@ -11,24 +12,24 @@ class checkout extends Component{
      price:0  
     }
   
-componentWillMount(){
-    const query = new URLSearchParams(this.props.location.search);
-    const ingredients = {}
-    let price = 0
-    for(let param of query.entries()){
+// componentWillMount(){
+//     const query = new URLSearchParams(this.props.location.search);
+//     const ingredients = {}
+//     let price = 0
+//     for(let param of query.entries()){
 
-        if(param[0]=='price'){
-           price = param[1]
-        }
-         else{ingredients[param[0]] = +param[1];}
+//         if(param[0]=='price'){
+//            price = param[1]
+//         }
+//          else{ingredients[param[0]] = +param[1];}
         
-    }
+//     }
 
-    this.setState({
-        ingredients:ingredients,
-        price:price
-    })
-}
+//     this.setState({
+//         ingredients:ingredients,
+//         price:price
+//     })
+// }
 
     CancelBtnHandler =() =>{
        this.props.history.goBack();
@@ -42,15 +43,11 @@ componentWillMount(){
     render(){
         return(
             <div>
-                <CheckOutSummary  ingredients = {this.state.ingredients}
+                <CheckOutSummary  ingredients = {this.props.ings}
                                   cancel = {this.CancelBtnHandler}
                                   continue = {this.continueBtnHandler}/>
                 <Route path = {this.props.match.path + '/contactdetails-form'}
-                       render ={(props)=> (<ContactDetails
-                       ingredients = {this.state.ingredients}
-                       price = {this.state.price}
-                       {...props}/>
-                       )}/>
+                       component = {ContactDetails}/>
             </div>
         )
     }
@@ -58,4 +55,11 @@ componentWillMount(){
 
 }
 
-export default checkout;
+const mapStateToProps = state=>{
+    return {
+        ings:state.ingredients,
+        currentPrice:state.currentPrice
+    }
+}
+
+export default connect(mapStateToProps)(checkout);
