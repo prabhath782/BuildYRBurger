@@ -42,14 +42,8 @@ const errorHandler = (WrappedComponent,axios)=>{
                        <WrappedComponent {...this.props}/>
                     </Aux>
                 )
-            }
-        
-      
+            } 
     }
-        
-    
-
-
 }
 
 export default errorHandler;

@@ -12,10 +12,10 @@ class App extends Component {
     return (
       <div className={classes.App}>
         <Layout>
-          <Route path= '/orders' component = {orders}></Route>
+          <Route path= '/orders' component = {orders}/>
           <Route path="/checkout" component={CheckOut} />
-          <Route path= '/' exact component = {BurgerBuilder}></Route>          
-        </Layout>               
+          <Route path= '/' exact component = {BurgerBuilder}/>
+        </Layout>
       </div>
     );
   }

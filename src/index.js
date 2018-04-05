@@ -8,6 +8,7 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import reducer from './store/reducers/reducer';
+import CombineReducers from './store/reducers/index';
 
 const logger = store=>{
     return next =>{
@@ -21,7 +22,7 @@ const logger = store=>{
     }
 }
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducer,composeEnhancers(applyMiddleware(logger)));
+const store = createStore(CombineReducers,composeEnhancers(applyMiddleware(logger)));
 
 let app = (
     <Provider store = {store}>

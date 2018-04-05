@@ -15,5 +15,4 @@ export const removeIngredient = (ingName)=>{
         type:actionTypes.REMOVE_INGREDIENT,
         ingredientName:ingName
     }
-
 }
