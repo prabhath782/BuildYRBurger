@@ -6,11 +6,6 @@ import CheckOutSummary from '../../components/Order/CheckOutSummary';
 import ContactDetails from '../../containers/Checkout/ContactDetails/ContactDetails';
 
 class checkout extends Component{
-    state = {
-     ingredients:null,
-     ingredientsStatus:true,
-     price:0  
-    }
   
 // componentWillMount(){
 //     const query = new URLSearchParams(this.props.location.search);
@@ -46,7 +41,7 @@ class checkout extends Component{
                 <CheckOutSummary  ingredients = {this.props.ings}
                                   cancel = {this.CancelBtnHandler}
                                   continue = {this.continueBtnHandler}/>
-                <Route path = {this.props.match.path + '/contactdetails-form'}
+                <Route path = {`${this.props.match.path  }/contactdetails-form`}
                        component = {ContactDetails}/>
             </div>
         )
@@ -55,11 +50,9 @@ class checkout extends Component{
 
 }
 
-const mapStateToProps = state=>{
-    return {
+const mapStateToProps = state=>({
         ings:state.ingredients,
         currentPrice:state.currentPrice
-    }
-}
+    })
 
 export default connect(mapStateToProps)(checkout);

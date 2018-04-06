@@ -10,15 +10,12 @@ class OderSum extends Component{
        }
 
           render(){
-          let ingredientsOrdered = Object.keys(this.props.ingredients).map(
-                (iKey)=>{
-        
-                    return(
+          const ingredientsOrdered = Object.keys(this.props.ingredients).map(
+                (iKey)=>(
                         <li key = {iKey}>
                             <span style = {{textTransform:'capitalize'}}>{iKey}</span>:{this.props.ingredients[iKey]}
                         </li>
-                    );
-                });
+                    ));
 
             return (
                 <Aux>

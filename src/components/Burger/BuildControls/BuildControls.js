@@ -9,8 +9,7 @@ const controls = [
     {label:'Bacon',type:'bacon'},
 ]
 
-const BuildControls = (props)=>{
-    return(
+const BuildControls = (props)=>(
     <div className = {classes.BuildControls}>
         <p 
            className = {classes.PriceBox}>
@@ -25,7 +24,7 @@ const BuildControls = (props)=>{
                           label = {cntrl.label} 
                           add = {()=>props.add(cntrl.type)} 
                           sub = {()=>props.sub(cntrl.type)}
-                          disabled = {props.disabled[cntrl.type]}></BuildControl>
+                          disabled = {props.disabled[cntrl.type]}/>
          )
         })}
         <button disabled = {!props.purchasable}
@@ -33,8 +32,6 @@ const BuildControls = (props)=>{
                 onClick = {props.purchase} >Checkout</button>
  </div>
     )
-
-}
     
     
 

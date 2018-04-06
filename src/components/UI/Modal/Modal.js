@@ -1,12 +1,14 @@
 import React,{Component} from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './Modal.css';
 import Aux from '../../../hoc/Auxi';
 import BackDrop from '../BackDrop/BackDrop';
 
+
 class Modal extends Component{
 
-  shouldComponentUpdate(nextProps,nextstates){
+  shouldComponentUpdate(nextProps){
      return nextProps.show !== this.props.show||nextProps.children !==this.props.children
   }
 
@@ -15,7 +17,7 @@ class Modal extends Component{
         return(
             <Aux>
               <BackDrop show = {this.props.show}
-                        backDropClick = {this.props.backDropClick}> </BackDrop>
+                        backDropClick = {this.props.backDropClick} />
              <div className = {classes.Modal}
                  style = {{
                      transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
@@ -28,6 +30,12 @@ class Modal extends Component{
         )
     }
 
+}
+
+Modal.propTypes = {
+    show : PropTypes.bool.isRequired,
+    backDropClick:PropTypes.bool.isRequired,
+    children: React.PropTypes.isRequired
 }
 
 export default Modal;

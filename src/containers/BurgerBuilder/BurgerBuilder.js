@@ -1,6 +1,6 @@
 import React ,{ Component } from 'react';
 import {connect} from 'react-redux';
-
+import PropTypes from 'prop-types';
 import Axios from '../../anxios.orders';
 import Aux from '../../hoc/Auxi';
 import Burger from '../../components/Burger/Burger';
@@ -22,27 +22,21 @@ class BurgerBuilder extends Component {
     constructor(props){
         super(props)
         this.state = {
-            // ingredients:null,
-            // currentPrice : 0,
-            purchasable:false,
             purchase:false,
             loading:false
         }
+        
     }
 
             componentDidMount() {
                 console.log(this.props)
             }
 
-               updatePurchaseState(ingredients) {
-                   const sum = Object.keys(ingredients)
-                       .map(igKey => {
-                           return ingredients[igKey];
-                       })
-                       .reduce((sum, el) => {
-                           return sum + el;
-                       }, 0);
-                     return sum > 0 ;
+               updatePurchaseState =(ingredients)=> {
+                   const sumvalue = Object.keys(ingredients)
+                       .map(igKey => ingredients[igKey])
+                       .reduce((sum, el) => sum + el, 0);
+                     return sumvalue > 0 ;
                }                 
            purchaseHandler = ()=>{
                   this.setState({
@@ -66,11 +60,11 @@ class BurgerBuilder extends Component {
             ...this.props.ings
           }
 
-         for(let key in shouldDisable){
-             shouldDisable[key] = shouldDisable[key]<=0;  
-           }
+          Object.keys(shouldDisable).forEach((key)=>{
+              shouldDisable[key]=shouldDisable[key]<=0
+          })
 
-        let burgerPriceBtn = this.props.currentPrice <= 0;
+        const burgerPriceBtn = this.props.currentPrice <= 0;
         let burger = <Spinner/>
          
         if(this.props.ings){
@@ -90,8 +84,7 @@ class BurgerBuilder extends Component {
               orderSummary = <OrderSummary ingredients = {this.props.ings}
                                          cancelBtn = {this.purchaseCancle}
                                          continueBtn = {this.continuepurchase}
-                                         totalPrice = {this.props.currentPrice}>
-                           </OrderSummary>;
+                                         totalPrice = {this.props.currentPrice} />;
         }
 
         if(this.state.loading){
@@ -111,21 +104,14 @@ class BurgerBuilder extends Component {
     }
 }
 
-const mapStateToProps = state =>{
-    return {
+const mapStateToProps = state =>({
         ings:state.burgerReducer.ingredients,
         currentPrice:state.burgerReducer.currentPrice
-    }
-}
+    })
 
-const mapDespatchToProps = dispatch =>{
-
-  return {
+const mapDespatchToProps = dispatch =>( {
       addIngredient: (ingredientName)=>{ dispatch(actionCreators.addIngredient(ingredientName)) },
       removeIngredient: (ingredientName)=>{ dispatch(actionCreators.removeIngredient(ingredientName)) }
-  }
-
-}
-
+  })
 
 export default connect(mapStateToProps,mapDespatchToProps)(errorHandler(BurgerBuilder,Axios)); 
