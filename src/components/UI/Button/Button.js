@@ -1,9 +1,8 @@
 import React from 'react';
 
 import classes from './Butoon.css'
-const button = (props) =>{
 
-  return (
+const button = (props) =>(
       <button
         className = {[classes.Button, classes[props.btnType]].join(' ')}
         onClick = {props.clicked}
@@ -12,8 +11,5 @@ const button = (props) =>{
         {props.children}
        </button>
   )
-
-
-}
 
 export default button

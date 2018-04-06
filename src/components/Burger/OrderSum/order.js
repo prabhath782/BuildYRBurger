@@ -1,14 +1,14 @@
 import React from 'react';
 
 import classes from './order.css';
+
 const Order =(props)=>{
 
-    let ingredients = {...props.ingredients};
-    let list = null;
-    let listArray = [];
+    const ingredients = {...props.ingredients};
+    const list = null;
+    const listArray = [];
 
-    for(let i in ingredients){
-       
+    Object.keys(ingredients).forEach(i=>       
            listArray.push(<span 
             style={{
                 textTransform: 'capitalize',
@@ -19,10 +19,7 @@ const Order =(props)=>{
                 padding: '5px'
                 }}
             key={i}>{i}:{ingredients[i]}</span>)
-             
-    }
-    
-
+            )
     return (
         <div className = {classes.order}>
             <h3>Order Id:{props.orderId.slice(0,5)}</h3>

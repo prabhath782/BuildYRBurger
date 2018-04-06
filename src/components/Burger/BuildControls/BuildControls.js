@@ -17,16 +17,14 @@ const BuildControls = (props)=>(
         <strong>{props.price.toFixed(2)}</strong>
        </p>
 
-    {controls.map((cntrl)=>{
-         return(
+    {controls.map((cntrl)=>(
              
             <BuildControl key={cntrl.label} 
                           label = {cntrl.label} 
                           add = {()=>props.add(cntrl.type)} 
                           sub = {()=>props.sub(cntrl.type)}
                           disabled = {props.disabled[cntrl.type]}/>
-         )
-        })}
+         ))}
         <button disabled = {!props.purchasable}
                 className = {classes.OrderButton}
                 onClick = {props.purchase} >Checkout</button>

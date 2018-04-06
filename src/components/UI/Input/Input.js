@@ -1,10 +1,11 @@
 import React from 'react'
 
 import classes from './Input.css'
+
 const input = (props)=>{
 
     let inputElement = null;
-    let inputElementClasses = [classes.InputElement];
+    const inputElementClasses = [classes.InputElement];
 
     console.log(props);
 
@@ -43,11 +44,9 @@ const input = (props)=>{
                </select>
            );
            break;
-              
-        default:
-           inputElement:<input value= {props.value}
-                                {...props.elementconfig}
-                               className = {inputElementClasses.join(' ')} {...props}/>
+           default: (
+               inputElement = <div/>
+           )                      
     }
 return( 
     

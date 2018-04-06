@@ -1,5 +1,6 @@
 import * as Actiontypes from '../actions/actionTypes';
 
+const intialState={}
 const contactDetailsReducer = (state=intialState,action)=>{
 
     switch(action.type){
@@ -10,6 +11,9 @@ const contactDetailsReducer = (state=intialState,action)=>{
         case Actiontypes.PRUCHASE_FAILURE:
         return{
             ...state
+        }
+        default:return{
+            state
         }
     }
 }
