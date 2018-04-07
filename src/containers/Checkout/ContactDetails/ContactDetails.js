@@ -96,7 +96,7 @@ class ContactDetails extends Component{
         formvalid:false
     }
 
-    checkValidationhandler(inputValue,rules){
+    checkValidationhandler=(inputValue,rules)=>{
         let isvalid = true;        
         if(rules.required){
             isvalid =  inputValue.trim() !== '' && isvalid
@@ -113,10 +113,15 @@ class ContactDetails extends Component{
             loading:true
         })
 
-          let order = {}
-          for(let i in this.state.orderForm){
-            order[i] = this.state.orderForm[i].value;        
-          }
+          const order = {}
+
+          Object.keys(this.state.orderForm).forEach((element)=>{
+            order[element] = this.state.orderForm[element].value;
+          })
+
+        //   for(const i in this.state.orderForm){
+        //     order[i] = this.state.orderForm[i].value;        
+        //   }
 
           const customerOrder = {
               ingredients:this.props.ings,
@@ -152,9 +157,14 @@ class ContactDetails extends Component{
 
         let validForm = true;
          
-        for(let element in updatedOrderForm){
+        Object.keys(updatedOrderForm).forEach(element =>{
             validForm = updatedOrderForm[element].valid && validForm
-        }
+        })
+         
+        // for(const element in updatedOrderForm){
+        //     validForm = updatedOrderForm[element].valid && validForm
+        // }
+
         this.setState({
             orderForm:updatedOrderForm,
             formvalid:validForm
@@ -163,18 +173,25 @@ class ContactDetails extends Component{
 
     render(){
 
-          let elementArray = [];
-          for(let key in this.state.orderForm){              
+          const elementArray = [];
+
+          Object.keys(this.state.orderForm).forEach((element)=>{
             elementArray.push({
-               id:key,
-               config:this.state.orderForm[key]
-            })
-          }
+                id:element,
+                config:this.state.orderForm[element]
+             })  
+          })
+
+        //   for(const key in this.state.orderForm){              
+        //     elementArray.push({
+        //        id:key,
+        //        config:this.state.orderForm[key]
+        //     })
+        //   }
 
         let form = (<form onSubmit = {this.orderHandler}>                
                        {
-                         elementArray.map(element =>{
-                             return(
+                         elementArray.map(element =>(
                                  <Input key = {element.id}
                                         elementtype={element.config.elementtype}
                                         elementconfig = {element.config.elementconfig}
@@ -182,8 +199,7 @@ class ContactDetails extends Component{
                                         touched = {element.config.touched}
                                         invalid = {!element.config.valid}
                                         clicked = {(event) => this.inputChangeHandler(event,element.id)} />
-                             )
-                         })
+                             ))
                        }
                      <Button btnType = 'Success'
                              disabled = {!this.state.formvalid}
@@ -204,11 +220,9 @@ class ContactDetails extends Component{
     }    
 }
 
-const mapsStateToProps = state=>{
-    return{
+const mapsStateToProps = state=>({
         ings:state.ingredients,
         currentPrice:state.currentPrice 
-    }
-}
+    })
 
 export default connect(mapsStateToProps)(ContactDetails);

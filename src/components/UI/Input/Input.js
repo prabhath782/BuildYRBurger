@@ -51,7 +51,7 @@ const input = (props)=>{
 return( 
     
     <div>
-        <label>{props.label}</label>
+        <label htmlFor="name">{props.label}</label>
            {inputElement}
      </div>
 )

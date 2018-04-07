@@ -5,6 +5,7 @@ import NavigationItems from '../NavigationItems/NavigationItems';
 import classes from './sideDrawer.css';
 import BackDrop from '../../UI/BackDrop/BackDrop';
 import Aux from '../../../hoc/Auxi';
+
 const sideDrawer = (props)=>{
 
     let sideDrawerClasses = [classes.SideDrawer, classes.Close]

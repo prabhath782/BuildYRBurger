@@ -1,9 +1,9 @@
-import {CombineReducers} from 'redux';
+import {combineReducers} from 'redux';
 
 import Reducer from './reducer';
 import OrderDetails from './orderDetails';
 
-const combinreducers = ()=>CombineReducers(
+const combinreducers = ()=>combineReducers(
         {burgerReducer:Reducer,
          orderdetails:OrderDetails
         })

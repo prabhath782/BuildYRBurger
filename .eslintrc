@@ -20,6 +20,8 @@
     "no-unused-vars": 1,
     "no-underscore-dangle": 0,
     "no-use-before-define": 0,
+    "no-param-reassign": 0,
+    "no-restricted-syntax": 0,
     "react/jsx-filename-extension": [
       "error",
       { "extensions": [".jsx", ".js"] }
@@ -27,6 +29,22 @@
     "react/prefer-stateless-function": [0, { "ignorePureComponents": true }],
     "linebreak-style": 0,
     "react/prop-types": 0,
-    "react/state": 0
+    "react/state": 0,
+    "react/no-did-mount-set-state": 0,
+    "react/no-array-index-key": 1,
+    "jsx-a11y/label-has-for": [
+      2,
+      {
+        "components": ["Label"],
+        "required": {
+          "some": ["nesting", "id"]
+        },
+        "allowChildren": false
+      }
+    ],
+    "jsx-a11y/no-interactive-elements": 0,
+    "jsx-a11y/no-static-element-interactions": 1,
+    "import/prefer-default-export": 0,
+    "jsx-a11y/click-events-have-key-events": 0
   }
 }

@@ -8,7 +8,7 @@ const contactDetailsReducer = (state=intialState,action)=>{
         return {
             ...state,
         }
-        case Actiontypes.PRUCHASE_FAILURE:
+        case Actiontypes.PURCHASE_FAILURE:
         return{
             ...state
         }

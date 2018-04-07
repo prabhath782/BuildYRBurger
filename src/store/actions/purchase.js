@@ -1,24 +1,19 @@
 import * as ActionTypes from '../actions/actionTypes';
 import axios from '../../anxios.orders';
 
-const purchaseSuccess = (name,order)=>{
-   return{
+const purchaseSuccess = (person,order)=>({
        type:ActionTypes.PURCHASE_SUCCESS,
-       name:name,
+       name:person,
        payLoad:order
-   }
-}
+   })
 
-const purchaseFailure = (error)=>{
-    return{
+const purchaseFailure = (error)=>({
         type:ActionTypes.PURCHASE_FAILURE,
         payLoad:error
-    }
-}
+    })
 
 
-export const purchaseStart = (order)=>{
-     return dispatch =>{
+export const purchaseStart = (order)=>dispatch =>{
          dispatch(purchaseStart())
          axios.post('/orders.json',order)
          .then(res =>{
@@ -28,4 +23,3 @@ export const purchaseStart = (order)=>{
              dispatch(purchaseFailure(err))
          })
      }
-}

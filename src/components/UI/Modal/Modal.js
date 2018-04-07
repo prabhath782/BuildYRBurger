@@ -34,8 +34,7 @@ class Modal extends Component{
 
 Modal.propTypes = {
     show : PropTypes.bool.isRequired,
-    backDropClick:PropTypes.bool.isRequired,
-    children: React.PropTypes.isRequired
+    backDropClick:PropTypes.bool.isRequired
 }
 
 export default Modal;

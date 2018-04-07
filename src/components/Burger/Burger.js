@@ -3,18 +3,10 @@ import classes from './burger.css';
 import BurgerIngredient from './BurgerIngredients/BurgerIngredients';
 
 const burger = (props)=>{
-    let message = null;
+    const message = null;
     let transformedIngredients = Object.keys(props.ingredients)
-                                    .map(iKey =>{
-                                        return [...Array(props.ingredients[iKey])]
-                                          .map((_, i)=>{
-                                             return  <BurgerIngredient key ={iKey+i} type = {iKey}></BurgerIngredient>
-                                          })
-
-                    
-                                    }).reduce((prearray,currentArray)=>{
-                                        return prearray.concat(currentArray)
-                                    })
+                                    .map(iKey =>[...Array(props.ingredients[iKey])]
+                                          .map((_, i)=><BurgerIngredient key ={iKey+i} type = {iKey} />)).reduce((prearray,currentArray)=>prearray.concat(currentArray))
                                     ;
      
      if(transformedIngredients.length === 0){
@@ -24,12 +16,10 @@ const burger = (props)=>{
      }                               
 
     return(
-
-         
         <div className = {classes.Burger}>                           
-           <BurgerIngredient type = "bread-top"></BurgerIngredient>
+           <BurgerIngredient type = "bread-top" />
                             {transformedIngredients}
-           <BurgerIngredient type = "bread-bottom"></BurgerIngredient>           
+           <BurgerIngredient type = "bread-bottom" />
                  {message}
         </div>
     ); 
