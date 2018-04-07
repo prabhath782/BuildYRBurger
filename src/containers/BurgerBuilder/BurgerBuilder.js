@@ -95,7 +95,7 @@ class BurgerBuilder extends Component {
         return(
             <Aux>
                 <Modal show = {this.state.purchase}
-                       purchaseCancle = {this.backDropClick}>
+                       modalCancel = {this.purchaseCancle}>
                 {orderSummary}
                </Modal>  
                {burger}              

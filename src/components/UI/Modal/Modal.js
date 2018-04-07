@@ -17,7 +17,7 @@ class Modal extends Component{
         return(
             <Aux>
               <BackDrop show = {this.props.show}
-                        backDropClick = {this.props.backDropClick} />
+                        backDropClick = {this.props.modalCancel} />
              <div className = {classes.Modal}
                  style = {{
                      transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
@@ -30,11 +30,6 @@ class Modal extends Component{
         )
     }
 
-}
-
-Modal.propTypes = {
-    show : PropTypes.bool.isRequired,
-    backDropClick:PropTypes.bool.isRequired
 }
 
 export default Modal;
