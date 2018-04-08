@@ -30,6 +30,7 @@ class BurgerBuilder extends Component {
 
             componentDidMount() {
                 console.log(this.props)
+                this.props.fetch();
             }
 
                updatePurchaseState =(ingredients)=> {
@@ -71,20 +72,20 @@ class BurgerBuilder extends Component {
              burger = (
                 <Aux>
                     <Burger  ingredients = {this.props.ings}/>                                    
-                      <BuildControls trols  add = {this.props.addIngredient}
+                      <BuildControls  trols  add = {this.props.addIngredient}
                                       sub = {this.props.removeIngredient}
-                      disabled = {shouldDisable}
-                      price = {this.props.currentPrice}
-                      purchasable = {this.updatePurchaseState(this.props.ings)} 
-                      purchase = {this.purchaseHandler}
-                      checkOutbtnDisable = {burgerPriceBtn}/>
+                                      disabled = {shouldDisable}
+                                      price = {this.props.currentPrice}
+                                      purchasable = {this.updatePurchaseState(this.props.ings)} 
+                                      purchase = {this.purchaseHandler}
+                                      checkOutbtnDisable = {burgerPriceBtn}/>
                 </Aux>
               );
               
               orderSummary = <OrderSummary ingredients = {this.props.ings}
-                                         cancelBtn = {this.purchaseCancle}
-                                         continueBtn = {this.continuepurchase}
-                                         totalPrice = {this.props.currentPrice} />;
+                                           cancelBtn = {this.purchaseCancle}
+                                           continueBtn = {this.continuepurchase}
+                                           totalPrice = {this.props.currentPrice} />;
         }
 
         if(this.state.loading){
@@ -111,7 +112,8 @@ const mapStateToProps = state =>({
 
 const mapDespatchToProps = dispatch =>( {
       addIngredient: (ingredientName)=>{ dispatch(actionCreators.addIngredient(ingredientName)) },
-      removeIngredient: (ingredientName)=>{ dispatch(actionCreators.removeIngredient(ingredientName)) }
+      removeIngredient: (ingredientName)=>{ dispatch(actionCreators.removeIngredient(ingredientName)) },
+      fetch :actionCreators.fetchIngredients()
   })
 
 export default connect(mapStateToProps,mapDespatchToProps)(errorHandler(BurgerBuilder,Axios)); 
