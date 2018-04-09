@@ -18,11 +18,6 @@ const rootReducer = combineReducers({
     orderDetailsReducer:orderDetails
 })
 
-// const logger = store=> next => action=>{            
-//             const result = next(action);            
-//             return result;
-//          }
-             
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer,composeEnhancers(applyMiddleware(thunk)));
 

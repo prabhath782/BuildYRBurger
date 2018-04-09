@@ -20,9 +20,13 @@ export const fetchFailed =()=>({
   type:actionTypes.FETCH_FAILED
 })
 
-export const fetchIngredients = ()=> dispatch =>{
-    axios.get('/ingredients.json')
-          .then(res=>dispatch(fetch(res.data)))
-          .catch(err=>dispatch(fetchFailed()))
-}    
-
+export const fetchIngredients = ()=>dispatch=>{
+    console.log('fetching')
+    axios.get('https://buildburger-ea9b1.firebaseio.com//ingredients.json')
+          .then(res=>{
+              dispatch(fetch(res.data))
+            })
+          .catch(err=>{
+              dispatch(fetchFailed())
+        })
+}

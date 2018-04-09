@@ -111,9 +111,9 @@ const mapStateToProps = state =>({
     })
 
 const mapDespatchToProps = dispatch =>( {
-      addIngredient: (ingredientName)=>{ dispatch(actionCreators.addIngredient(ingredientName)) },
+      addIngredient:(ingredientName)=>{ dispatch(actionCreators.addIngredient(ingredientName)) },
       removeIngredient: (ingredientName)=>{ dispatch(actionCreators.removeIngredient(ingredientName)) },
-      fetch :actionCreators.fetchIngredients()
+      fetch :() => dispatch(actionCreators.fetchIngredients())
   })
 
 export default connect(mapStateToProps,mapDespatchToProps)(errorHandler(BurgerBuilder,Axios)); 
