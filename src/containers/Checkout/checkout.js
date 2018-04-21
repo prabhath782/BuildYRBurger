@@ -6,26 +6,6 @@ import CheckOutSummary from '../../components/Order/CheckOutSummary';
 import ContactDetails from '../../containers/Checkout/ContactDetails/ContactDetails';
 
 class checkout extends Component{
-  
-// componentWillMount(){
-//     const query = new URLSearchParams(this.props.location.search);
-//     const ingredients = {}
-//     let price = 0
-//     for(let param of query.entries()){
-
-//         if(param[0]=='price'){
-//            price = param[1]
-//         }
-//          else{ingredients[param[0]] = +param[1];}
-        
-//     }
-
-//     this.setState({
-//         ingredients:ingredients,
-//         price:price
-//     })
-// }
-
     CancelBtnHandler =() =>{
        this.props.history.goBack();
     }
