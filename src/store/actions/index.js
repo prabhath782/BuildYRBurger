@@ -3,4 +3,4 @@ export {
  }
  from './burgerBuilder';
 
- export{OrderActions} from './orderAction';
+ export{fetchOrders} from './orderAction';
