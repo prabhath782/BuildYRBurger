@@ -8,7 +8,6 @@ import ErrorHandler from '../../hoc/ErrorHandler/ErrorHandling';
 import * as actionCreators from '../../store/actions/orderAction';
 
 class Orders extends Component{
-
     componentDidMount(){     
         this.props.fetchOrders();
     }
@@ -34,7 +33,10 @@ class Orders extends Component{
     }
 
     render(){
+        console.log(this.props.orders)
+
         return(this.loading()
+        
             )
         
     }
