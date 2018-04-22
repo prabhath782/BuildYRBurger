@@ -7,9 +7,9 @@ import Axios from '../../anxios.orders';
 import ErrorHandler from '../../hoc/ErrorHandler/ErrorHandling';
 import * as actionCreators from '../../store/actions/orderAction';
 
-class Orders extends Component{ 
-    componentDidMount(){
-        this.props.fetchOrders();        
+class Orders extends Component{
+    componentDidMount(){     
+        this.props.fetchOrders();
     }
     
     loading = () =>{
@@ -39,12 +39,31 @@ class Orders extends Component{
     }
 
 
+    loading = ()=>{
+    
+    const orders = Object.keys(this.props.orders);
+    const fetchedOrders = {...this.props.orders};
+      if(this.props.loading){
+          return(
+              <Loading />
+          )
+      }
+
+      return(
+        <div>
+        {orders.map(order=> ( <Order
+                key ={order}
+                orderId ={order}
+                ingredients = {fetchedOrders[order].ingredients}
+                price = {+fetchedOrders[order].price}/>))}  
+        </div>)
+    }
+
     render(){
         console.log(this.props.orders)
 
-        return(
-            this.loading()
-        )
+        return(this.loading()
+            )
         
     }
 }

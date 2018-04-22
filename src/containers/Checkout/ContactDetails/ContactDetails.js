@@ -137,8 +137,7 @@ class ContactDetails extends Component{
     
     }
 
-    inputChangeHandler = (event,inputId)=>{
-          
+    inputChangeHandler = (event,inputId)=>{      
         const updatedOrderForm = {
              ...this.state.orderForm
             };
@@ -206,8 +205,8 @@ class ContactDetails extends Component{
 }
 
 const mapsStateToProps = state=>({
-        ings:state.ingredients,
-        currentPrice:state.currentPrice 
+        ings:state.burgerReducer.ingredients,
+        currentPrice:state.burgerReducer.currentPrice 
     })
 
 export default connect(mapsStateToProps)(ContactDetails);
