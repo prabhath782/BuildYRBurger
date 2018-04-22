@@ -16,10 +16,6 @@ export default (state = initialState,action) => {
          loading:false
      }
      case ActionTypes.PURCHASE_SUCCESS:
-    //   const newOrder = {
-    //                      ...action.orderData,
-    //                      id:action.orderId
-    //   }
       return{
           ...state,
           loading:false,
