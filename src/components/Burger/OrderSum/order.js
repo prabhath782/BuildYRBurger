@@ -7,7 +7,6 @@ const Order =(props)=>{
     const ingredients = {...props.ingredients};
     const list = null;
     const listArray = [];
-
     Object.keys(ingredients).forEach(i=>       
            listArray.push(<span 
             style={{

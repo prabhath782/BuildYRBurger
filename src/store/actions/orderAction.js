@@ -33,6 +33,7 @@ export const purchaseStarted = ()=>({
 export const purchaseOrder = (orderData)=> dispatch=>{
     dispatch(purchaseStarted()) 
     axios.post('/orders.json',orderData)
-          .then(res=>dispatch(purchaseSucess(res.id,orderData)))
+          .then(res=> res.json())
+          .then(res =>dispatch(purchaseSucess(res.id,orderData))) 
           .catch(err=>dispatch(purchaseFailure(err)))
 }

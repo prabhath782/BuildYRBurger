@@ -119,10 +119,6 @@ class ContactDetails extends Component{
             order[element] = this.state.orderForm[element].value;
           })
 
-        //   for(const i in this.state.orderForm){
-        //     order[i] = this.state.orderForm[i].value;        
-        //   }
-
           const customerOrder = {
               ingredients:this.props.ings,
               price:this.props.currentPrice,
@@ -161,10 +157,6 @@ class ContactDetails extends Component{
             validForm = updatedOrderForm[element].valid && validForm
         })
          
-        // for(const element in updatedOrderForm){
-        //     validForm = updatedOrderForm[element].valid && validForm
-        // }
-
         this.setState({
             orderForm:updatedOrderForm,
             formvalid:validForm
@@ -181,13 +173,6 @@ class ContactDetails extends Component{
                 config:this.state.orderForm[element]
              })  
           })
-
-        //   for(const key in this.state.orderForm){              
-        //     elementArray.push({
-        //        id:key,
-        //        config:this.state.orderForm[key]
-        //     })
-        //   }
 
         let form = (<form onSubmit = {this.orderHandler}>                
                        {

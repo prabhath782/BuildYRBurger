@@ -4,7 +4,8 @@ import Reducer from './reducer';
 import OrderDetails from './orderDetails';
 
 const combinreducers = ()=>combineReducers(
-        {burgerReducer:Reducer,
+        {
+         burgerReducer:Reducer,
          orderdetails:OrderDetails
         })
 
