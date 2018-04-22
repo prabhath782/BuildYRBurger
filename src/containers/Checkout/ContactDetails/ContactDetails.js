@@ -119,10 +119,6 @@ class ContactDetails extends Component{
             order[element] = this.state.orderForm[element].value;
           })
 
-        //   for(const i in this.state.orderForm){
-        //     order[i] = this.state.orderForm[i].value;        
-        //   }
-
           const customerOrder = {
               ingredients:this.props.ings,
               price:this.props.currentPrice,
