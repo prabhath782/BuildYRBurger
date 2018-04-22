@@ -156,10 +156,6 @@ class ContactDetails extends Component{
             validForm = updatedOrderForm[element].valid && validForm
         })
          
-        // for(const element in updatedOrderForm){
-        //     validForm = updatedOrderForm[element].valid && validForm
-        // }
-
         this.setState({
             orderForm:updatedOrderForm,
             formvalid:validForm

@@ -11,6 +11,33 @@ class Orders extends Component{
     componentDidMount(){     
         this.props.fetchOrders();
     }
+    
+    loading = () =>{
+        const orders = Object.keys(this.props.orders);
+        
+        console.log(typeof(orders));
+        if(this.props.loading){
+          return (
+              <Loading />
+          )
+        }
+        else if(orders.length !==0){
+            
+            return(<div>
+                {orders.map(order=> (<Order
+                        key ={order}
+                        orderId ={order}
+                        ingredients = {this.props.orders[order].ingredients}
+                        price = {+this.props.orders[order].price} />))}  
+
+           </div>)
+        }
+    return (
+        <h1> Fetching Error </h1>
+    )
+
+    }
+
 
     loading = ()=>{
     
@@ -36,7 +63,6 @@ class Orders extends Component{
         console.log(this.props.orders)
 
         return(this.loading()
-        
             )
         
     }
