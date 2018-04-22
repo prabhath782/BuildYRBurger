@@ -2,57 +2,47 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 
 import Order from '../../components/Burger/OrderSum/order';
+import Loading from '../../components/UI/LodingSpinner/LoadingSpinner';
 import Axios from '../../anxios.orders';
 import ErrorHandler from '../../hoc/ErrorHandler/ErrorHandling';
 import * as actionCreators from '../../store/actions/orderAction';
 
 class Orders extends Component{
-    // state ={
-    //     orders : [],
-    //     loading:true
-    // }        // state ={
-    //     orders : [],
-    //     loading:true
-    // } 
-    componentDidMount(){
-        // const fetchOrders = []
-        // Axios.get('/orders.json')
-        //        .then(res=>{  
-        //            Object.keys(res.data).forEach((key)=>(
-        //             fetchOrders.push({...res.data[key],id:key})                       
-        //            ))                
-        //         this.setState({
-        //             ...this.state,
-        //             orders:fetchOrders,
-        //             loading:false
-        //         })               
-        //        })
-        //        .catch(
-        //         this.setState({
-        //             ...this.state,
-        //             loading:false
-        //         })
-        //        )
+
+    componentDidMount(){     
         this.props.fetchOrders();
     }
 
-    render(){
-        console.log(this.props.orders)
-        return(
-            <div>
-                 {this.props.orders.map(order=> ( <Order
-                         key ={order.id}
-                         orderId ={order.id}
-                         ingredients = {order.ingredients}
-                         price = {+order.price}/>))}  
+    loading = ()=>{
+    
+    const orders = Object.keys(this.props.orders);
+    const fetchedOrders = {...this.props.orders};
+      if(this.props.loading){
+          return(
+              <Loading />
+          )
+      }
 
-            </div>
-        )
+      return(
+        <div>
+        {orders.map(order=> ( <Order
+                key ={order}
+                orderId ={order}
+                ingredients = {fetchedOrders[order].ingredients}
+                price = {+fetchedOrders[order].price}/>))}  
+        </div>)
+    }
+
+    render(){
+        return(this.loading()
+            )
+        
     }
 }
 
 const mapStateToProps = (state)=>({
-  orders:state.orderDetailsReducer.orders
+  orders:state.orderDetailsReducer.orders,
+  loading:state.orderDetailsReducer.loading
 })
 
 const mapDispatchToProps = (dispatch)=>({

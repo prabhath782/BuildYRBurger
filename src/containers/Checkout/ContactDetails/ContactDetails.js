@@ -137,8 +137,7 @@ class ContactDetails extends Component{
     
     }
 
-    inputChangeHandler = (event,inputId)=>{
-          
+    inputChangeHandler = (event,inputId)=>{      
         const updatedOrderForm = {
              ...this.state.orderForm
             };
@@ -178,13 +177,6 @@ class ContactDetails extends Component{
              })  
           })
 
-        //   for(const key in this.state.orderForm){              
-        //     elementArray.push({
-        //        id:key,
-        //        config:this.state.orderForm[key]
-        //     })
-        //   }
-
         let form = (<form onSubmit = {this.orderHandler}>                
                        {
                          elementArray.map(element =>(
@@ -217,8 +209,8 @@ class ContactDetails extends Component{
 }
 
 const mapsStateToProps = state=>({
-        ings:state.ingredients,
-        currentPrice:state.currentPrice 
+        ings:state.burgerReducer.ingredients,
+        currentPrice:state.burgerReducer.currentPrice 
     })
 
 export default connect(mapsStateToProps)(ContactDetails);

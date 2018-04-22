@@ -31,7 +31,7 @@ class checkout extends Component{
 }
 
 const mapStateToProps = state=>({
-        ings:state.ingredients,
+        ings:state.burgerReducer.ingredients,
         currentPrice:state.currentPrice
     })
 
